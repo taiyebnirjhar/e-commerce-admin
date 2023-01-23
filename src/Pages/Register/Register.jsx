@@ -44,50 +44,6 @@ function Register() {
                   </div>
                 );
               })}
-              {/* <div className="my-4">
-                <div className="lg:text-xl xl:text-2xl 2xl:text-3xl roboto flex flex-row gap-4 self-center">
-                  <div>
-                    <i className="bx bx-check text-blue-600 text-4xl "></i>
-                  </div>
-                  <div className=" flex self-center">Easy integration</div>
-                </div>
-                <div className="ml-[3.35rem] mt-2  sm:text-base lg:text-base xl:text-lg text-slate-400">
-                  Effortlessly integrate Tradeify with your existing systems and
-                  applications, streamlining your workflow and saving you time.
-                </div>
-              </div>
-
-              <div className="my-4">
-                <div className="lg:text-xl xl:text-2xl 2xl:text-3xl roboto flex flex-row gap-4 self-center">
-                  <div>
-                    <i className="bx bx-check text-blue-600 text-4xl "></i>
-                  </div>
-                  <div className=" flex self-center">
-                    Work with your data as code
-                  </div>
-                </div>
-                <div className="ml-[3.35rem] mt-2  sm:text-base lg:text-base xl:text-lg text-slate-400">
-                  Documents in MongoDB map directly to objects in your
-                  programming language. Modify your schema as your apps grow
-                  over time.
-                </div>
-              </div>
-
-              <div className="my-4">
-                <div className="lg:text-xl xl:text-2xl 2xl:text-3xl roboto flex flex-row gap-4 self-center">
-                  <div>
-                    <i className="bx bx-check text-blue-600 text-4xl "></i>
-                  </div>
-                  <div className=" flex self-center">
-                    Work with your data as code
-                  </div>
-                </div>
-                <div className="ml-[3.35rem] mt-2  sm:text-base lg:text-base xl:text-lg text-slate-400">
-                  Documents in MongoDB map directly to objects in your
-                  programming language. Modify your schema as your apps grow
-                  over time.
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -99,9 +55,9 @@ function Register() {
           </h1>
         </div>
         {/* form */}
-        <div className="mx-4   sm:flex sm:self-center ">
+        <div className="mx-4  sm:flex sm:self-center ">
           {/* px-24 py-52 */}
-          <div className="  rounded-3xl lg:ml-auto p-4 sm:px-16 sm:py-6 md:px-16 md:py-6 lg:px-14 lg:py-6 xl:px-20 xl:py-10 2xl:px-28 2xl:py-16  bg-slate-200 ">
+          <div className="max-w-sm mx-auto  sm:max-w-max  rounded-3xl lg:ml-auto p-4 sm:px-16 sm:py-6 md:px-16 md:py-6 lg:px-14 lg:py-6 xl:px-20 xl:py-10 2xl:px-28 2xl:py-16  bg-slate-200 ">
             <div>
               <div className="roboto text-2xl pb-2 sm:text-3xl sm:pb-4 lg:text-3xl lg:pb-4  xl:text-4xl 2xl:text-5xl text-center xl:pb-6 2xl:pb-8 text-slate-800">
                 Sign Up
@@ -131,7 +87,7 @@ function Register() {
                   </label>
                 </div>
               </div>
-              {/* email */}
+              {/* phone */}
               <div className="mb-12">
                 <div className="relative z-0">
                   <input
