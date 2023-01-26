@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import AdminNavbar from "../Components/AdminNavbar";
 import HeaderStats from "../Components/HeaderStats";
 import Sidebar from "../Components/Sidebar";
 
 function Main() {
+  useEffect(() => {
+    document.title = "tradeify : dash";
+  }, []);
   return (
     <>
       <Sidebar />

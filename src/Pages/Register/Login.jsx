@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   const benefits = [
@@ -18,6 +19,38 @@ function Login() {
       para: "Get real-time insights into your sales, customer behavior, and performance metrics, so you can make data-driven decisions and improve your bottom line.",
     },
   ];
+  const [showPassword, setShowPassword] = useState();
+
+  /******************/
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  // const {} = useContext(GeneralDataContext);
+  // /******************/
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Send a request to your server to log the user in
+    const response = await fetch("", {
+      method: "POST",
+      body: JSON.stringify({ phoneNumber, password }),
+      headers: { "Content-Type": "application/json" },
+    });
+    // Handle the response from the server
+    if (response.ok) {
+      // Get the JWT from the response
+      const { token } = await response.json();
+      // Save the JWT in local storage
+      localStorage.setItem("jwt", token);
+      // Redirect the user to the dash page
+      window.location.href = "/dash";
+    } else {
+      // Show an error message
+      alert("Error logging in");
+    }
+  };
+  /******************/
+  useEffect(() => {
+    document.title = "tradeify : Login";
+  }, []);
 
   return (
     <div>
@@ -67,32 +100,15 @@ function Login() {
                 E-commerce at its finest.
               </div>
             </div>
-            {/* onSubmit={handleSignUp} */}
-            <form className="roboto">
-              {/* name */}
-              {/* <div className="mb-12">
-                <div className="relative z-0">
-                  <input
-                    name="name"
-                    type="text"
-                    id="name"
-                    className="block py-2.5 px-0 w-full text-sm sm:text-base lg:text-base xl:text-lg bg-transparent border-0 border-b-2 appearance-none text-slate-800 border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" "
-                    required
-                  />
-                  <label
-                    htmlFor="name"
-                    className="absolute text-sm sm:text-base lg:text-base xl:text-lg text-slate-800 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Full Name <span className="text-red-600">*</span>
-                  </label>
-                </div>
-              </div> */}
+
+            <form className="roboto" onSubmit={handleSubmit}>
               {/* phone */}
               <div className="mb-12">
                 <div className="relative z-0">
                   <input
-                    type="tel"
+                    type="number"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     name="phone"
                     id="phone"
                     className="block py-2.5 px-0 w-full text-sm sm:text-base lg:text-base xl:text-lg bg-transparent border-0 border-b-2 appearance-none text-slate-800 border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -111,7 +127,9 @@ function Login() {
               <div className="mb-12">
                 <div className="relative z-0">
                   <input
-                    // type={!showPassword ? "password" : "text"}
+                    type={!showPassword ? "password" : "text"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     name="password"
                     id="password"
                     className="block py-2.5 px-0 w-full text-sm  sm:text-base lg:text-base xl:text-lg bg-transparent border-0 border-b-2 appearance-none text-slate-800 border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -129,7 +147,9 @@ function Login() {
               <div className="mb-12">
                 <div className="flex items-center">
                   <input
-                    // onClick={togglePassword}
+                    onClick={() => {
+                      setShowPassword((prev) => !prev);
+                    }}
                     id="link-checkbox"
                     type="checkbox"
                     value=""
@@ -149,50 +169,16 @@ function Login() {
                 type="submit"
                 className="text-slate-300 text-sm sm:text-base lg:text-base xl:text-lg bg-blue-700 duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold roboto rounded-lg hover:rounded-2xl  w-full py-2.5 text-center"
               >
-                Create new account
+                Login
               </button>
 
-              <div className="text-center py-4">or</div>
-
-              <div
-                // onClick={GOOGLE_LOGIN}
-                className="text-slate-800 text-sm sm:text-base lg:text-base xl:text-lg border border-slate-800  duration-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold roboto rounded-lg hover:rounded-2xl   w-full py-2.5 text-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="inline "
-                  x="0px"
-                  y="0px"
-                  width="23"
-                  height="23"
-                  viewBox="0 0 48 48"
-                >
-                  <path
-                    fill="#FFC107"
-                    d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-                  ></path>
-                  <path
-                    fill="#FF3D00"
-                    d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-                  ></path>
-                  <path
-                    fill="#4CAF50"
-                    d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-                  ></path>
-                  <path
-                    fill="#1976D2"
-                    d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-                  ></path>
-                </svg>
-                <span className="px-2 ">Sign in with google</span>
-              </div>
               <div className="text-center mt-8 text-xs md:text-sm lg:text-sm xl:text-base text-slate-800">
                 Already have an account?
-                {/* <Link to={"/login"}> */}
-                <span className="underline px-2 text-blue-600 cursor-pointer">
-                  Sign in
-                </span>
-                {/* </Link> */}
+                <Link to={"/register"}>
+                  <span className="underline px-2 text-blue-600 cursor-pointer">
+                    register
+                  </span>
+                </Link>
               </div>
             </form>
           </div>
@@ -203,3 +189,24 @@ function Login() {
 }
 
 export default Login;
+{
+  /* <form onSubmit={handleSubmit}>
+  <label>
+    Phone Number:
+    <input
+      type="text"
+      value={phoneNumber}
+      onChange={(e) => setPhoneNumber(e.target.value)}
+    />
+  </label>
+  <label>
+    Password:
+    <input
+      type="password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
+  </label>
+  <button type="submit">Login</button>
+</form>; */
+}

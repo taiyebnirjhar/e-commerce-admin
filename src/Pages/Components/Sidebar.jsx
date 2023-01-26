@@ -64,7 +64,7 @@ function Sidebar() {
             {/********/}
             {/* Heading */}
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Layout Pages
+              Admin
             </h6>
             {/********/}
             {/* Navigation */}
@@ -77,7 +77,7 @@ function Sidebar() {
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/dashboard"
+                  to="/dash/dashboard"
                 >
                   <i
                     className={
@@ -99,11 +99,11 @@ function Sidebar() {
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/products"
+                  to="/dash/products"
                 >
                   <i
                     className={
-                      "fas fa-tools mr-2 text-sm " +
+                      "fa-brands fa-dropbox mr-2 text-sm " +
                       (window.location.href.indexOf("/products") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
@@ -121,11 +121,11 @@ function Sidebar() {
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/customers"
+                  to="/dash/customers"
                 >
                   <i
                     className={
-                      "fas fa-table mr-2 text-sm " +
+                      "fa-solid fa-user mr-2 text-sm " +
                       (window.location.href.indexOf("/customer") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
@@ -143,11 +143,11 @@ function Sidebar() {
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/orders"
+                  to="/dash/orders"
                 >
                   <i
                     className={
-                      "fas fa-map-marked mr-2 text-sm " +
+                      "fa-regular fa-hourglass-half mr-2 text-sm " +
                       (window.location.href.indexOf("/orders") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
@@ -158,33 +158,11 @@ function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/maps") !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  // to="/admin/maps"
-                >
+                <Link className={"text-xs uppercase py-3 font-bold block "}>
                   <i
-                    className={
-                      "fas fa-map-marked mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/maps") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
-                    }
-                  ></i>
-                  Add new products
-                </Link>
-              </li>
-
-              <li className="items-center">
-                <Link
-                  className={"text-xs uppercase py-3 font-bold block "}
-                  // to="/admin/maps"
-                >
-                  <i className={"fas fa-map-marked mr-2 text-sm "}></i> logout
+                    className={"fa-solid fa-right-from-bracket mr-2 text-sm "}
+                  ></i>{" "}
+                  logout
                 </Link>
               </li>
             </ul>

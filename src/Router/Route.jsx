@@ -1,45 +1,88 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Error from "../Pages/Error/Error";
+import Home from "../Pages/Home/Home";
 import Loading from "../Pages/Loading/Loading";
 import Main from "../Pages/Main/Main";
 import Login from "../Pages/Register/Login";
 import Register from "../Pages/Register/Register";
 import AddCustomer from "../Views/AddCustomer";
 import AddProduct from "../Views/AddProduct";
+import BookDetails from "../Views/BookDetails";
 import Customer from "../Views/Customer";
 import Dashboard from "../Views/Dashboard";
+import LandingPage from "../Views/LandingPage";
+import LandingProduct from "../Views/LandingProduct";
+import Order from "../Views/Order";
 import Products from "../Views/Products";
+import LoaderRoute from "./LoaderRoute";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Home />,
     children: [
       {
-        path: "/products",
+        path: "/",
+        element: (
+          <LoaderRoute>
+            <LandingPage />
+          </LoaderRoute>
+        ),
+      },
+      {
+        path: "/books",
+        element: (
+          <LoaderRoute>
+            <LandingProduct />
+          </LoaderRoute>
+        ),
+        loader: () => fetch("https://api.itbook.store/1.0/new"),
+      },
+      {
+        path: "/book/:id",
+        element: <BookDetails />,
+        loader: ({ params }) =>
+          fetch(`https://api.itbook.store/1.0/books/${params.id}`),
+      },
+    ],
+    errorElement: <Error />,
+  },
+  {
+    path: "/dash",
+    element: (
+      <PrivateRoute>
+        <LoaderRoute>
+          <Main />
+        </LoaderRoute>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dash/products",
         element: <Products />,
       },
       {
-        path: "/dashboard",
+        path: "/dash/dashboard",
         element: <Dashboard />,
       },
       {
-        path: "/customers",
+        path: "/dash/customers",
         element: <Customer />,
       },
       {
-        path: "/customers/new",
+        path: "/dash/customers/new",
         element: <AddCustomer />,
       },
       {
-        path: "/products/new",
+        path: "/dash/products/new",
         element: <AddProduct />,
       },
-      ,
+
       {
-        path: "/orders",
-        element: <div>hello</div>,
+        path: "/dash/orders",
+        element: <Order />,
       },
     ],
     errorElement: <Error />,
