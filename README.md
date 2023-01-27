@@ -1,5 +1,7 @@
 # Introduction
 
+Tradeify is a platform for trading books. Users can browse through a variety of books, view their details, and purchase them. The platform also features a dashboard where users can manage their account, view their order history, and more.
+
 This is an e-commerce admin web application built with ReactJS . The application includes the following views:
 
 1.Home/Landing View
