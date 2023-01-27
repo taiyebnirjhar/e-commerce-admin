@@ -16,7 +16,6 @@ import LandingProduct from "../Views/LandingProduct";
 import Order from "../Views/Order";
 import Products from "../Views/Products";
 import LoaderRoute from "./LoaderRoute";
-import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -52,11 +51,11 @@ const router = createBrowserRouter([
   {
     path: "/dash",
     element: (
-      <PrivateRoute>
-        <LoaderRoute>
-          <Main />
-        </LoaderRoute>
-      </PrivateRoute>
+      // <PrivateRoute>
+      <LoaderRoute>
+        <Main />
+      </LoaderRoute>
+      // </PrivateRoute>
     ),
     children: [
       {
