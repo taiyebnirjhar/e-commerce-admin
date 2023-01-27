@@ -1,6 +1,6 @@
 # Introduction
 
-This is an e-commerce admin web application built with ReactJS and NextJS. The application includes the following views:
+This is an e-commerce admin web application built with ReactJS . The application includes the following views:
 
 1.Home/Landing View
 
