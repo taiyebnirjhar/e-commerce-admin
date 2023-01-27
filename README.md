@@ -3,11 +3,17 @@
 This is an e-commerce admin web application built with ReactJS and NextJS. The application includes the following views:
 
 1.Home/Landing View
+
 2.Product List View
+
 3.Product Detail View
+
 4.Admin Dashboard
+
 5.Admin Customers List
+
 6.Admin Order List
+
 7.Admin Product List
 
 # Getting Started
